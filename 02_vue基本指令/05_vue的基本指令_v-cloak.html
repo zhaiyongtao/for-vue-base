@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-cloak的使用</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+<div id="app"></div>
+<template id="my-app">
+    <h2 v-cloak>{{message}}</h2> <!-- v-cloak: 防止闪烁 ,和css规则如[v-cloak] {display},隐藏未编译的Mustache{{}}语法直到组件实例准备完毕-->
+</template>
+
+<script src="../lib/js/vue.global.js"></script>
+
+<script>
+    const app = {
+        template: `#my-app`,
+        data: function () {
+            return {
+                message: `<div>我是html</div>`,
+            }
+        },
+        methods: {
+            changeMessage: function () {
+                this.message = 'hello world'
+            },
+        }
+    }
+
+    Vue.createApp(app).mount('#app');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-pre的使用</title>
+</head>
+<body>
+
+<div id="app"></div>
+<template id="my-app">
+    <h2>{{message}}</h2>
+    <!--  v-pre不会解析{{}}语法，跳过不需要编译的节点，加快编译速度-->
+    <h2 v-pre>{{message}}</h2>
+    <!--{{}}语法更为灵活-->
+    <h2 v-text="message"></h2>
+    <div v-html="message"></div>
+    <p>{{counter}}</p>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+</template>
+
+<script src="../lib/js/vue.global.js"></script>
+
+<script>
+    const app = {
+        template: `#my-app`,
+        data: function () {
+            return {
+                message: `<div>我是html</div>`,
+                counter: 0,
+            }
+        },
+        methods: {
+            changeMessage: function () {
+                this.message = 'hello world'
+            },
+            add: function () {
+                this.counter++
+            },
+            sub: function () {
+                this.counter--
+            }
+        }
+    }
+
+    Vue.createApp(app).mount('#app');
+</script>
+
+</body>
+</html>

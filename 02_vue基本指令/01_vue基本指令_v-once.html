@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-once的使用</title>
+</head>
+<body>
+
+<div id="app"></div>
+<template id="my-app">
+    <h2>{{message}}</h2>
+    <p>{{counter}}</p>
+    <p v-once>{{counter}}</p> <!-- v-once只渲染一次, 如果是组件，那么其子组件永远都不会再重新渲染，性能优化 -->
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+</template>
+
+<script src="../lib/js/vue.global.js"></script>
+
+<script>
+    const app = {
+        template: `#my-app`,
+        data: function () {
+            return {
+                message: 'Hello Vue!',
+                counter: 0,
+            }
+        },
+        methods: {
+            changeMessage: function () {
+                this.message = 'hello world'
+            },
+            add: function () {
+                this.counter++
+            },
+            sub: function () {
+                this.counter--
+            }
+        }
+    }
+
+    Vue.createApp(app).mount('#app');
+</script>
+
+</body>
+</html>
