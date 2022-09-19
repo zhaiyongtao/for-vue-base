@@ -13,10 +13,13 @@
     "@nio-fe/lego": "^1.3.1",
     "node-sass": "^7.0.3",
     "pinia": "^2.0.21",
+    "reset-css": "^5.0.1",
     "vue": "^3.2.38",
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@nio-fe/icon": "^1.3.1",
+    "@nio-fe/locale-vue": "^1.3.1",
     "@rushstack/eslint-patch": "^1.1.4",
     "@types/node": "^16.11.56",
     "@vitejs/plugin-vue": "^3.0.3",
